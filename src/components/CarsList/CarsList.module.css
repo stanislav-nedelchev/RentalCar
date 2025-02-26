@@ -1,0 +1,33 @@
+.list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  column-gap: 22px;
+  row-gap: 32px;
+  margin: 0 auto;
+  width: 280px;
+}
+
+@media screen and (min-width: 768px) {
+  .list {
+    row-gap: 40px;
+    column-gap: 26px;
+    width: 600px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .list {
+    width: 900px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .list {
+    row-gap: 48px;
+    column-gap: 32px;
+    width: 1200px;
+  }
+}
