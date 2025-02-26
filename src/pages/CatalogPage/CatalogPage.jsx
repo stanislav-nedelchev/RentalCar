@@ -1,4 +1,4 @@
-import CarList from '../components/CarsList/CarsList.jsx';
+import CarList from '../../components/CarsList/CarsList.jsx';
 
 const CatalogPage = () => {
   return (

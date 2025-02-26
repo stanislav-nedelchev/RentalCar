@@ -1,0 +1,50 @@
+.detailsPage {
+  display: flex;
+  justify-content: center;
+  gap: 72px;
+  padding: 84px 120px 104px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.img {
+  border-radius: 19px;
+  width: 640px;
+  height: 512px;
+  object-fit: cover;
+  margin-bottom: 40px;
+}
+
+.mainInfo {
+  width: 488px;
+  margin-top: 20px;
+  margin-bottom: 68px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33;
+  color: var(--main);
+  margin-bottom: 8px;
+}
+
+.titleSpan {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--gray);
+  margin-left: 16px;
+}
+
+.location {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--main);
+  margin-bottom: 16px;
+}
+
+.icon {
+  fill: var(--main);
+}

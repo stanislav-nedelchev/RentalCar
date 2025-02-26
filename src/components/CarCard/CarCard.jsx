@@ -46,7 +46,7 @@ const CarCard = ({ car }) => {
           {formattedType} <SvgLine /> {formattedMileage}
         </p>
       </div>
-      <LinkSite text="Read more" link="/catalog/${car.id}" />
+      <LinkSite text="Read more" link={`/catalog/${car.id}`} />
     </div>
   );
 };
