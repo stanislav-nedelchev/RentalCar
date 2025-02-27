@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import CarCard from '../CarCard/CarCard.jsx';
 import css from './CarsList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCars } from '../../redux/cars/operations.js';
 import { selectCars } from '../../redux/cars/selector.js';
+import { fetchCars } from '../../redux/operations.js';
 
 const CarList = () => {
   const dispatch = useDispatch();

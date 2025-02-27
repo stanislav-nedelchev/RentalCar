@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchCars, fetchCarById, fetchBrands } from './operations';
+import { fetchBrands, fetchCarById, fetchCars } from '../operations.js';
 
 const carsSlice = createSlice({
   name: 'cars',
@@ -51,4 +51,5 @@ const carsSlice = createSlice({
         state.error = action.payload;
       }),
 });
+
 export const carsReducer = carsSlice.reducer;
