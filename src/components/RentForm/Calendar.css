@@ -1,0 +1,27 @@
+/* Стили для инпута внутри React Datepicker */
+.react-datepicker__input-container {
+  width: 100%;
+  display: block; /* Убедитесь, что контейнер инпута является блочным элементом */
+}
+
+.react-datepicker__input-container input {
+  box-sizing: border-box; /* Это важно для правильной работы с padding и border */
+  display: block; /* Убедитесь, что инпут блочный элемент */
+  border-radius: 12px;
+  padding: 12px 20px;
+  width: 100%;
+  height: 48px;
+  background-color: var(--inputs);
+  outline: none;
+  border: none;
+  margin-bottom: 16px;
+}
+
+/* Также проверьте стили для самого контейнера, в котором находится дата */
+.react-datepicker {
+  width: 100%;
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+}

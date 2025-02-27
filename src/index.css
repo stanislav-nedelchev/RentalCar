@@ -1,48 +1,27 @@
 /* ===== Fonts ===== */
 @font-face {
   font-display: swap;
-  font-family: "Manrope";
+  font-family: 'Manrope';
   font-weight: 400;
-  src: url("/fonts/manrope-v15-latin-regular.woff2") format("woff2");
+  src: url('/fonts/manrope-v15-latin-regular.woff2') format('woff2');
 }
 @font-face {
   font-display: swap;
-  font-family: "Manrope";
+  font-family: 'Manrope';
   font-weight: 500;
-  src: url("/fonts/manrope-v15-latin-500.woff2") format("woff2");
+  src: url('/fonts/manrope-v15-latin-500.woff2') format('woff2');
 }
 @font-face {
   font-display: swap;
-  font-family: "Manrope";
+  font-family: 'Manrope';
   font-weight: 600;
-  src: url("/fonts/manrope-v15-latin-600.woff2") format("woff2");
+  src: url('/fonts/manrope-v15-latin-600.woff2') format('woff2');
 }
 @font-face {
   font-display: swap;
-  font-family: "Manrope";
+  font-family: 'Manrope';
   font-weight: 700;
-  src: url("/fonts/manrope-v15-latin-700.woff2") format("woff2");
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "Inter";
-  font-weight: 400;
-  src: url("/fonts/inter-v18-latin-regular.woff2") format("woff2");
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "Inter";
-  font-weight: 500;
-  src: url("/fonts/inter-v18-latin-500.woff2") format("woff2");
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "Inter";
-  font-weight: 600;
-  src: url("/fonts/inter-v18-latin-600.woff2") format("woff2");
+  src: url('/fonts/manrope-v15-latin-700.woff2') format('woff2');
 }
 
 /* ===== Root ===== */
@@ -55,8 +34,7 @@
   --white: #fff;
   --button: #3470ff;
   --button-hover: #0b44cd;
-  --font-family: "Manrope", sans-serif;
-  --second-family: "Inter", sans-serif;
+  --font-family: 'Manrope', sans-serif;
 }
 
 /* ===== Common styles ===== */
