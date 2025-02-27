@@ -25,7 +25,6 @@
   font-weight: 600;
   font-size: 24px;
   line-height: 1.33;
-  color: var(--main);
   margin-bottom: 8px;
 }
 
@@ -41,10 +40,67 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 1.25;
-  color: var(--main);
   margin-bottom: 16px;
+}
+
+.locationSpan {
+  margin-left: 16px;
 }
 
 .icon {
   fill: var(--main);
+  margin-right: 4px;
+}
+
+.price {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33;
+  color: var(--button);
+  margin-bottom: 32px;
+}
+
+.description {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 110px;
+}
+
+.infoTitle {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.infoText {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  margin-right: 8px;
+  margin-bottom: 16px;
+}
+
+.specificationsList {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.specificationsItem {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+}
+.specificationsIcon {
+  fill: var(--main);
+  margin-right: 8px;
 }

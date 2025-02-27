@@ -1,0 +1,18 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.icon {
+  fill: var(--main);
+  margin-right: 8px;
+}
