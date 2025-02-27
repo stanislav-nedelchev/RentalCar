@@ -1,10 +1,32 @@
+import { useDispatch, useSelector } from 'react-redux';
 import LinkSite from '../LinkSite/LinkSite.jsx';
 import css from './CarCard.module.css';
+import { addFavorite, removeFavorite } from '../../redux/favorites/slice.js';
+import { selectFavorites } from '../../redux/favorites/selectors.js';
 
 const CarCard = ({ car }) => {
-  const SvgLike = () => (
-    <svg width="16" height="16">
-      <use href="/icons.svg#iconLike"></use>
+  const dispatch = useDispatch();
+  const favorites = useSelector(selectFavorites) || [];
+
+  const isFavorited = favorites.includes(car.id);
+
+  const handleFavoriteCar = () => {
+    if (isFavorited) {
+      dispatch(removeFavorite(car.id));
+    } else {
+      dispatch(addFavorite(car.id));
+    }
+  };
+
+  const SvgNormal = () => (
+    <svg width="16" height="16" className={css.svgNormal}>
+      <use href="/icons.svg#iconNormal"></use>
+    </svg>
+  );
+
+  const SvgFavorite = () => (
+    <svg width="16" height="16" className={css.svgFavorite}>
+      <use href="/icons.svg#iconFavorite"></use>
     </svg>
   );
 
@@ -26,9 +48,14 @@ const CarCard = ({ car }) => {
 
   return (
     <div className={css.carCard}>
-      <button type="button" className={css.likeBtn}>
-        <SvgLike />
+      <button
+        type="button"
+        className={css.favoriteBtn}
+        onClick={handleFavoriteCar}
+      >
+        {isFavorited ? <SvgFavorite /> : <SvgNormal />}
       </button>
+
       <img src={car.img} alt={car.description} className={css.carImg} />
       <div className={css.carName}>
         <h2 className={css.title}>

@@ -3,7 +3,7 @@
   width: 276px;
 }
 
-.likeBtn {
+.favoriteBtn {
   position: absolute;
   top: 16px;
   right: 16px;
@@ -11,8 +11,15 @@
   border: none;
   background-color: transparent;
   padding: 0;
-  fill: var(--badges);
   cursor: pointer;
+}
+
+.svgNormal {
+  fill: var(--badges);
+}
+
+.svgFavorite {
+  fill: var(--button);
 }
 
 .carImg {
