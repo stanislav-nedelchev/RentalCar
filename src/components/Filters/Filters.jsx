@@ -29,9 +29,7 @@ const Filters = () => {
     return prices;
   };
 
-  const handleSearch = async (values, { resetForm }) => {
-    console.log('Поиск с фильтрами:', values);
-
+  const handleSearch = async values => {
     // Сначала очищаем список автомобилей
     dispatch(clearCars());
 
@@ -48,9 +46,6 @@ const Filters = () => {
         maxMileage: values.maxMileage,
       }),
     );
-
-    // После завершения запроса сбрасываем форму (сбрасываем поля в начальные значения)
-    resetForm();
   };
 
   return (
@@ -86,7 +81,6 @@ const Filters = () => {
                   </option>
                 ))}
               </Field>
-              {touched.brand && errors.brand && <div>{errors.brand}</div>}
             </div>
             <div>
               <label htmlFor="rentalPrice" className={css.label}>
@@ -107,9 +101,6 @@ const Filters = () => {
                   </option>
                 ))}
               </Field>
-              {touched.rentalPrice && errors.rentalPrice && (
-                <div>{errors.rentalPrice}</div>
-              )}
             </div>
             <div className={css.mileageBox}>
               <div>
@@ -126,9 +117,6 @@ const Filters = () => {
                   placeholder="From"
                   className={css.fieldMin}
                 />
-                {touched.minMileage && errors.minMileage && (
-                  <div>{errors.minMileage}</div>
-                )}
               </div>
               <div>
                 <Field
@@ -141,8 +129,22 @@ const Filters = () => {
                   placeholder="To"
                   className={css.fieldMax}
                 />
-                {touched.maxMileage && errors.maxMileage && (
-                  <div>{errors.maxMileage}</div>
+              </div>
+              {/* Відображення помилок під формою */}
+              <div className={css.errors}>
+                {Object.keys(errors).length > 0 && (
+                  <div className={css.errorMessages}>
+                    {Object.keys(errors).map(field => {
+                      if (touched[field] && errors[field]) {
+                        return (
+                          <div key={field} className={css.errorMessage}>
+                            {errors[field]}
+                          </div>
+                        );
+                      }
+                      return null;
+                    })}
+                  </div>
                 )}
               </div>
             </div>

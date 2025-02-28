@@ -19,7 +19,7 @@ const CarList = () => {
   return (
     <ul className={css.list}>
       {cars.length === 0 ? (
-        <li>No cars available</li>
+        <p>No car was found for your request. Try changing the filters.</p>
       ) : (
         cars.map(car => <CarCard key={car.id} car={car} />)
       )}

@@ -22,10 +22,7 @@ const validationSchemaFilters = Yup.object({
       'minMileage',
       (minMileage, schema) =>
         minMileage &&
-        schema.min(
-          minMileage,
-          'Maximum mileage cannot be less than the minimum',
-        ),
+        schema.min(minMileage, 'Max mileage cannot be less than the min'),
     ),
 });
 
