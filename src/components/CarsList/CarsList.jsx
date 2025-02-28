@@ -1,30 +1,20 @@
 import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCars } from '../../redux/operations.js';
+import { selectCars } from '../../redux/cars/selector.js';
+import { selectFilters } from '../../redux/filters/selector.js';
 import CarCard from '../CarCard/CarCard.jsx';
 import css from './CarsList.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectCars } from '../../redux/cars/selector.js';
-import { fetchCars } from '../../redux/operations.js';
-import { clearCars } from '../../redux/cars/slice.js';
 
 const CarList = () => {
   const dispatch = useDispatch();
+  const cars = useSelector(selectCars);
+  const filters = useSelector(selectFilters);
 
   useEffect(() => {
-    // Очистим старые данные, когда компонент загружается
-    dispatch(clearCars());
-    // Добавляем фильтры по умолчанию
-    dispatch(
-      fetchCars({
-        page: 1,
-        brand: '',
-        rentalPrice: '',
-        minMileage: '',
-        maxMileage: '',
-      }),
-    );
-  }, [dispatch]);
-
-  const cars = useSelector(selectCars);
+    // При изменении фильтров отправляем запрос с новыми параметрами
+    dispatch(fetchCars({ ...filters, page: 1 }));
+  }, [dispatch, filters]);
 
   return (
     <ul className={css.list}>
