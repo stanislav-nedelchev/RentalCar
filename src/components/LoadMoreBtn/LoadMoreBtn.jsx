@@ -10,11 +10,18 @@ const LoadMoreBtn = () => {
 
   const handleLoadMore = () => {
     const nextPage = currentPage + 1;
-    dispatch(setPage(nextPage));
-    dispatch(fetchCars(nextPage));
+    dispatch(setPage(nextPage)); // Обновляем состояние страницы в сторе
+    dispatch(
+      fetchCars({
+        page: nextPage,
+        brand: '',
+        rentalPrice: '',
+        minMileage: '',
+        maxMileage: '',
+      }),
+    ); // Запрашиваем машины для следующей страницы
   };
 
-  // return <button onClick={handleLoadMore}>Load More</button>;
   return (
     <Button
       type="submit"

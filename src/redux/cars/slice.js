@@ -14,6 +14,10 @@ const carsSlice = createSlice({
     setPage: (state, action) => {
       state.page = action.payload;
     },
+    clearCars: state => {
+      // Новый экшен для очистки списка машин
+      state.items = [];
+    },
   },
   extraReducers: builder =>
     builder
@@ -24,7 +28,7 @@ const carsSlice = createSlice({
       .addCase(fetchCars.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.items = [...state.items, ...action.payload.cars];
+        state.items = action.payload.cars; // Обновляем список машин
       })
       .addCase(fetchCars.rejected, (state, action) => {
         state.loading = false;
@@ -58,5 +62,5 @@ const carsSlice = createSlice({
       }),
 });
 
-export const { setPage } = carsSlice.actions;
+export const { setPage, clearCars } = carsSlice.actions;
 export const carsReducer = carsSlice.reducer;

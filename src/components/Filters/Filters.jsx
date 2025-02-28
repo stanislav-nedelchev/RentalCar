@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchBrands, fetchCars } from '../../redux/operations.js';
 import { selectBrands } from '../../redux/cars/selector.js';
+import { clearCars } from '../../redux/cars/slice.js';
 
 const Filters = () => {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ const Filters = () => {
       `Ищем автомобили бренда: ${selectedBrand}, с ценой аренды: ${selectedRentalPrice}, с минимальным пробегом: ${selectedMinMileage}, с максимальным пробегом: ${selectedMaxMileage}`,
     );
 
+    dispatch(clearCars());
     // Диспатчим экшн для получения автомобилей с выбранными фильтрами
     dispatch(
       fetchCars({

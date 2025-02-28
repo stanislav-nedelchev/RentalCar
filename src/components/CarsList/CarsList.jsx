@@ -4,11 +4,24 @@ import css from './CarsList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCars } from '../../redux/cars/selector.js';
 import { fetchCars } from '../../redux/operations.js';
+import { clearCars } from '../../redux/cars/slice.js';
 
 const CarList = () => {
   const dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(fetchCars());
+    // Очистим старые данные, когда компонент загружается
+    dispatch(clearCars());
+    // Добавляем фильтры по умолчанию
+    dispatch(
+      fetchCars({
+        page: 1,
+        brand: '',
+        rentalPrice: '',
+        minMileage: '',
+        maxMileage: '',
+      }),
+    );
   }, [dispatch]);
 
   const cars = useSelector(selectCars);
