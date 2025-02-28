@@ -8,6 +8,12 @@ const carsSlice = createSlice({
     brands: [],
     loading: false,
     error: null,
+    page: 1,
+  },
+  reducers: {
+    setPage: (state, action) => {
+      state.page = action.payload;
+    },
   },
   extraReducers: builder =>
     builder
@@ -18,7 +24,7 @@ const carsSlice = createSlice({
       .addCase(fetchCars.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.items = action.payload.cars;
+        state.items = [...state.items, ...action.payload.cars];
       })
       .addCase(fetchCars.rejected, (state, action) => {
         state.loading = false;
@@ -52,4 +58,5 @@ const carsSlice = createSlice({
       }),
 });
 
+export const { setPage } = carsSlice.actions;
 export const carsReducer = carsSlice.reducer;
