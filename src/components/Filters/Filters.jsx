@@ -6,7 +6,9 @@ import { selectFilters } from '../../redux/filters/selector.js';
 import { setFilters } from '../../redux/filters/slice.js';
 import { clearCars } from '../../redux/cars/slice.js';
 import { Field, Form, Formik } from 'formik';
-import validationSchemaFilters from '../../schemas/validationSchema.jsx';
+import { validationSchemaFilters } from '../../schemas/validationSchema.jsx';
+import css from './Filters.module.css';
+import Button from '../Button/Button.jsx';
 
 const Filters = () => {
   const dispatch = useDispatch();
@@ -64,91 +66,88 @@ const Filters = () => {
     >
       {({ values, handleChange, handleBlur, errors, touched }) => (
         <Form>
-          <h3>Фильтры</h3>
-
-          {/* Выпадающий список для выбора бренда */}
-          <div>
-            <label htmlFor="brand">Бренд:</label>
-            <Field
-              as="select"
-              name="brand"
-              value={values.brand}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            >
-              <option value="">Выберите бренд</option>
-              {brands && brands.length > 0 ? (
-                brands.map(brand => (
+          <div className={css.formBox}>
+            <div>
+              <label htmlFor="brand" className={css.label}>
+                Car brand
+              </label>
+              <Field
+                as="select"
+                name="brand"
+                value={values.brand}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className={css.fieldBand}
+              >
+                <option value="">Choose a brand</option>
+                {brands.map(brand => (
                   <option key={brand} value={brand}>
                     {brand}
                   </option>
-                ))
-              ) : (
-                <option disabled>Нет доступных брендов</option>
+                ))}
+              </Field>
+              {touched.brand && errors.brand && <div>{errors.brand}</div>}
+            </div>
+            <div>
+              <label htmlFor="rentalPrice" className={css.label}>
+                Price/ 1 hour
+              </label>
+              <Field
+                as="select"
+                name="rentalPrice"
+                value={values.rentalPrice}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className={css.fieldPrice}
+              >
+                <option value="">Choose a price</option>
+                {generatePriceOptions().map(price => (
+                  <option key={price} value={price}>
+                    {price}
+                  </option>
+                ))}
+              </Field>
+              {touched.rentalPrice && errors.rentalPrice && (
+                <div>{errors.rentalPrice}</div>
               )}
-            </Field>
-            {touched.brand && errors.brand && <div>{errors.brand}</div>}
+            </div>
+            <div className={css.mileageBox}>
+              <div>
+                <label htmlFor="minMileage" className={css.label}>
+                  Сar mileage / km
+                </label>
+                <Field
+                  type="number"
+                  id="minMileage"
+                  name="minMileage"
+                  value={values.minMileage}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  placeholder="From"
+                  className={css.fieldMin}
+                />
+                {touched.minMileage && errors.minMileage && (
+                  <div>{errors.minMileage}</div>
+                )}
+              </div>
+              <div>
+                <Field
+                  type="number"
+                  id="maxMileage"
+                  name="maxMileage"
+                  value={values.maxMileage}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  placeholder="To"
+                  className={css.fieldMax}
+                />
+                {touched.maxMileage && errors.maxMileage && (
+                  <div>{errors.maxMileage}</div>
+                )}
+              </div>
+            </div>
+            <Button type="submit" text="Search" />
           </div>
-
-          {/* Выпадающий список для выбора rentalPrice */}
-          <div>
-            <label htmlFor="rentalPrice">Цена аренды:</label>
-            <Field
-              as="select"
-              name="rentalPrice"
-              value={values.rentalPrice}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            >
-              {generatePriceOptions().map(price => (
-                <option key={price} value={price}>
-                  {price}
-                </option>
-              ))}
-            </Field>
-            {touched.rentalPrice && errors.rentalPrice && (
-              <div>{errors.rentalPrice}</div>
-            )}
-          </div>
-
-          {/* Поле ввода для минимального пробега */}
-          <div>
-            <label htmlFor="minMileage">Минимальный пробег (км): </label>
-            <Field
-              type="number"
-              id="minMileage"
-              name="minMileage"
-              value={values.minMileage}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              placeholder="Введите минимальный пробег"
-              min="0"
-            />
-            {touched.minMileage && errors.minMileage && (
-              <div>{errors.minMileage}</div>
-            )}
-          </div>
-
-          {/* Поле ввода для максимального пробега */}
-          <div>
-            <label htmlFor="maxMileage">Максимальный пробег (км): </label>
-            <Field
-              type="number"
-              id="maxMileage"
-              name="maxMileage"
-              value={values.maxMileage}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              placeholder="Введите максимальный пробег"
-              min="0"
-            />
-            {touched.maxMileage && errors.maxMileage && (
-              <div>{errors.maxMileage}</div>
-            )}
-          </div>
-
-          {/* Кнопка для поиска */}
-          <button type="submit">Искать</button>
         </Form>
       )}
     </Formik>

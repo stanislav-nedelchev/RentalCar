@@ -1,0 +1,75 @@
+.formBox {
+  display: flex;
+  gap: 16px;
+  width: 924px;
+  height: 68px;
+  align-items: flex-end;
+  margin: 0 auto;
+}
+
+.label {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.33;
+  color: var(--gray);
+  margin-bottom: 8px;
+}
+
+.fieldBand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 12px;
+  padding: 6px 16px;
+  width: 204px;
+  height: 44px;
+  background-color: var(--inputs);
+  border: none;
+}
+
+.fieldPrice {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 12px;
+  padding: 6px 16px;
+  width: 196px;
+  height: 44px;
+  background-color: var(--inputs);
+  border: none;
+}
+
+.mileageBox {
+  display: flex;
+  width: 320px;
+  height: 68px;
+  align-items: flex-end;
+}
+
+.fieldMin {
+  border: none;
+  border-right: 1px solid var(--gray-light);
+  border-radius: 12px 0 0 12px;
+  padding: 6px 16px;
+  width: 160px;
+  height: 44px;
+  background-color: var(--inputs);
+}
+
+.fieldMax {
+  border-radius: 0 12px 12px 0;
+  padding: 6px 16px;
+  width: 160px;
+  height: 44px;
+  background-color: var(--inputs);
+  border: none;
+}
+
+.fieldMin::placeholder,
+.fieldMax::placeholder {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--main);
+}
