@@ -1,20 +1,10 @@
 import { Formik, Field, Form, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
 import DatePicker from 'react-datepicker';
 import Button from '../Button/Button.jsx';
 import 'react-datepicker/dist/react-datepicker.css';
 import './Calendar.css';
 import css from './RentForm.module.css';
-
-// Создаем схему валидации с использованием Yup
-const validationSchema = Yup.object({
-  name: Yup.string().required('Name is required'),
-  email: Yup.string()
-    .email('Invalid email address')
-    .required('Email is required'),
-  bookingDate: Yup.date().nullable(),
-  comment: Yup.string().max(500, 'Comment should be less than 500 characters'),
-});
+import { validationSchemaRentForm } from '../../schemas/validationSchema.jsx';
 
 const RentForm = () => {
   const handleSubmit = values => {
@@ -34,7 +24,7 @@ const RentForm = () => {
           bookingDate: null,
           comment: '',
         }}
-        validationSchema={validationSchema}
+        validationSchema={validationSchemaRentForm}
         onSubmit={handleSubmit}
       >
         {({ setFieldValue }) => (
