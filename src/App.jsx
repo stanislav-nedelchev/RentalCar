@@ -2,7 +2,6 @@ import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Loader from './components/Loader/Loader.jsx';
 import { Layout } from './components/Layout/Layout.jsx';
-import './App.css';
 import { Toaster } from 'react-hot-toast';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage.jsx'));

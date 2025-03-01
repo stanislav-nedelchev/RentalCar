@@ -4,7 +4,7 @@ import { fetchBrands, fetchCarById, fetchCars } from '../operations.js';
 const carsSlice = createSlice({
   name: 'cars',
   initialState: {
-    items: [],
+    cars: [],
     brands: [],
     loading: false,
     error: null,
@@ -12,11 +12,11 @@ const carsSlice = createSlice({
     totalPages: 1,
   },
 
-  // reducers: {
-  //   clearCars: state => {
-  //           state.items = [];
-  //   },
-  // },
+  reducers: {
+    clearCars: state => {
+      state.cars = [];
+    },
+  },
 
   extraReducers: builder =>
     builder
@@ -29,7 +29,7 @@ const carsSlice = createSlice({
         console.log('Page:', action.payload.page);
         state.loading = false;
         state.error = null;
-        state.items = action.payload.cars;
+        state.cars = [...state.cars, ...action.payload.cars];
         state.totalPages = action.payload.totalPages;
         state.page = action.payload.page;
       })
@@ -64,5 +64,5 @@ const carsSlice = createSlice({
       }),
 });
 
-// export const { clearCars } = carsSlice.actions;
+export const { clearCars } = carsSlice.actions;
 export const carsReducer = carsSlice.reducer;

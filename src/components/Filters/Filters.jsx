@@ -4,23 +4,21 @@ import { fetchBrands, fetchCars } from '../../redux/operations.js';
 import { selectBrands } from '../../redux/cars/selector.js';
 import { selectFilters } from '../../redux/filters/selector.js';
 import { setFilters } from '../../redux/filters/slice.js';
-// import { clearCars } from '../../redux/cars/slice.js';
 import { Field, Form, Formik } from 'formik';
 import { validationSchemaFilters } from '../../schemas/validationSchema.jsx';
-import css from './Filters.module.css';
+import { clearCars } from '../../redux/cars/slice.js';
 import Button from '../Button/Button.jsx';
+import css from './Filters.module.css';
 
 const Filters = () => {
   const dispatch = useDispatch();
-  const brands = useSelector(selectBrands); // Получаем бренды из Redux Store
-  const filters = useSelector(selectFilters); // Получаем фильтры из Redux
+  const brands = useSelector(selectBrands);
+  const filters = useSelector(selectFilters);
 
-  // Загрузка брендов при монтировании компонента
   useEffect(() => {
     dispatch(fetchBrands());
   }, [dispatch]);
 
-  // Функция для создания списка цен от 30 до 100 с шагом 10
   const generatePriceOptions = () => {
     let prices = [];
     for (let price = 30; price <= 100; price += 10) {
@@ -29,15 +27,11 @@ const Filters = () => {
     return prices;
   };
 
-  const handleSearch = async values => {
-    // Сначала очищаем список автомобилей
-    // dispatch(clearCars());
-
-    // Обновляем фильтры в Redux перед отправкой запроса
+  const handleSearch = values => {
+    dispatch(clearCars());
     dispatch(setFilters(values));
 
-    // Отправляем запрос для получения автомобилей с выбранными фильтрами
-    await dispatch(
+    dispatch(
       fetchCars({
         page: 1,
         brand: values.brand,
@@ -68,6 +62,7 @@ const Filters = () => {
               </label>
               <Field
                 as="select"
+                id="brand"
                 name="brand"
                 value={values.brand}
                 onChange={handleChange}
@@ -88,6 +83,7 @@ const Filters = () => {
               </label>
               <Field
                 as="select"
+                id="rentalPrice"
                 name="rentalPrice"
                 value={values.rentalPrice}
                 onChange={handleChange}
