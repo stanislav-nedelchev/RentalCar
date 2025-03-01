@@ -16,16 +16,18 @@ const Filters = () => {
   const filters = useSelector(selectFilters);
 
   useEffect(() => {
+    dispatch(clearCars());
     dispatch(fetchBrands());
-  }, [dispatch]);
-
-  const generatePriceOptions = () => {
-    let prices = [];
-    for (let price = 30; price <= 100; price += 10) {
-      prices.push(price);
-    }
-    return prices;
-  };
+    dispatch(
+      fetchCars({
+        page: 1,
+        brand: filters.brand || '',
+        rentalPrice: filters.rentalPrice || '',
+        minMileage: filters.minMileage || '',
+        maxMileage: filters.maxMileage || '',
+      }),
+    );
+  }, []);
 
   const handleSearch = values => {
     dispatch(clearCars());
@@ -40,6 +42,14 @@ const Filters = () => {
         maxMileage: values.maxMileage,
       }),
     );
+  };
+
+  const generatePriceOptions = () => {
+    let prices = [];
+    for (let price = 30; price <= 100; price += 10) {
+      prices.push(price);
+    }
+    return prices;
   };
 
   return (
