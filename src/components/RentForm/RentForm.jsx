@@ -1,15 +1,51 @@
 import { Formik, Field, Form, ErrorMessage } from 'formik';
-import DatePicker from 'react-datepicker';
+import { useState } from 'react';
+import { validationSchemaRentForm } from '../../schemas/validationSchema.jsx';
 import Button from '../Button/Button.jsx';
+import DatePicker from 'react-datepicker';
+import Modal from 'antd/es/modal/Modal.js';
+import { toast } from 'react-hot-toast';
 import 'react-datepicker/dist/react-datepicker.css';
 import './Calendar.css';
 import css from './RentForm.module.css';
-import { validationSchemaRentForm } from '../../schemas/validationSchema.jsx';
 
-const RentForm = () => {
-  const handleSubmit = values => {
-    console.log('Form data submitted:', values);
+const RentForm = ({ car }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formValues, setFormValues] = useState({});
+  const [resetForm, setResetForm] = useState(null);
+
+  const showModal = () => {
+    setIsModalOpen(true);
   };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+    toast.success('Your booking was successfully submitted!');
+    if (resetForm) {
+      resetForm();
+    }
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleSubmit = (values, { setSubmitting, resetForm }) => {
+    console.log('Form data submitted:', values);
+    console.log(car);
+    setFormValues(values);
+    showModal();
+    setSubmitting(false);
+    setResetForm(() => resetForm);
+  };
+
+  const formattedDate = formValues.bookingDate
+    ? formValues.bookingDate.toLocaleDateString('en-GB', {
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric',
+      })
+    : '';
 
   return (
     <div className={css.rentForm}>
@@ -27,7 +63,7 @@ const RentForm = () => {
         validationSchema={validationSchemaRentForm}
         onSubmit={handleSubmit}
       >
-        {({ setFieldValue }) => (
+        {({ setFieldValue, isValid, dirty }) => (
           <Form>
             <div>
               <Field
@@ -94,11 +130,52 @@ const RentForm = () => {
                 className={css.errorMessage}
               />
             </div>
-
-            <Button type="submit" text="Send"></Button>
+            <Button
+              type="submit"
+              text="Send"
+              disabled={!isValid || !dirty}
+            ></Button>
           </Form>
         )}
       </Formik>
+      <Modal
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        width={800}
+        centered
+      >
+        {formValues && (
+          <div className={css.modalBox}>
+            <img src={car.img} alt={car.brand} className={css.modalImg} />
+            <div>
+              <h3 className={css.modalTitle}>Dear {formValues.name}</h3>
+              <p className={css.modalText}>You are going to rent</p>
+              <p>
+                <span className={css.modalSpan}>
+                  {car.brand} {car.model},
+                </span>{' '}
+                {car.year}
+                <br />
+                for
+                <span className={css.modalSpan}>
+                  {' '}
+                  {car.rentalPrice}$ per hour
+                </span>
+                <br />
+                {formattedDate && (
+                  <>
+                    <span className={css.modalSpan}>{formattedDate}</span>
+                    <br />
+                  </>
+                )}
+                at the address <br />
+                <span className={css.modalSpan}> {car.address}</span>
+              </p>
+            </div>
+          </div>
+        )}
+      </Modal>
     </div>
   );
 };

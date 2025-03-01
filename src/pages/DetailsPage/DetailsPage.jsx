@@ -1,38 +1,27 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { useParams } from 'react-router-dom';
 import css from './DetailsPage.module.css';
 import RentForm from '../../components/RentForm/RentForm.jsx';
 import CarInfoList from '../../components/CarInfoList/CarInfoList.jsx';
+import { selectCarById } from '../../redux/cars/selector.js';
+import { fetchCarById } from '../../redux/operations.js';
+import Loader from '../../components/Loader/Loader.jsx';
 
 const DetailsPage = () => {
   const { id } = useParams();
+  const dispatch = useDispatch();
 
-  // ===============================Удалить=====================
-  const [car, setCar] = useState(null); // Изначально null, так как мы ожидаем объект, а не массив.
+  const car = useSelector(selectCarById);
 
   useEffect(() => {
-    const fetchCar = async () => {
-      try {
-        const response = await axios.get(
-          `https://car-rental-api.goit.global/cars/${id}`,
-        );
-        console.log(response.data);
-        setCar(response.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    fetchCar();
-  }, [id]);
+    dispatch(fetchCarById(id));
+  }, [dispatch, id]);
 
   if (!car) {
-    return <div>Загрузка...</div>;
+    return <Loader />;
   }
-
-  console.log(car);
-  // =================================================================
 
   const regex = /\/(\d+)-ai\.jpg$/;
   const someNmb = car.img.match(regex);
@@ -51,7 +40,7 @@ const DetailsPage = () => {
     <div className={css.detailsPage}>
       <div>
         <img src={car.img} alt={car.brand} className={css.img} />
-        <RentForm />
+        <RentForm car={car} />
       </div>
       <div>
         <div className={css.mainInfo}>

@@ -40,12 +40,11 @@ const carsSlice = createSlice({
       })
       .addCase(fetchCarById.fulfilled, (state, action) => {
         state.loading = false;
-        state.error = null;
-        state.items = action.payload;
+        state.items = [action.payload];
       })
       .addCase(fetchCarById.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = action.error.message;
       })
       .addCase(fetchBrands.pending, state => {
         state.loading = true;
