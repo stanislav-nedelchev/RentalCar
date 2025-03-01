@@ -4,7 +4,7 @@ import { fetchBrands, fetchCars } from '../../redux/operations.js';
 import { selectBrands } from '../../redux/cars/selector.js';
 import { selectFilters } from '../../redux/filters/selector.js';
 import { setFilters } from '../../redux/filters/slice.js';
-import { clearCars } from '../../redux/cars/slice.js';
+// import { clearCars } from '../../redux/cars/slice.js';
 import { Field, Form, Formik } from 'formik';
 import { validationSchemaFilters } from '../../schemas/validationSchema.jsx';
 import css from './Filters.module.css';
@@ -31,7 +31,7 @@ const Filters = () => {
 
   const handleSearch = async values => {
     // Сначала очищаем список автомобилей
-    dispatch(clearCars());
+    // dispatch(clearCars());
 
     // Обновляем фильтры в Redux перед отправкой запроса
     dispatch(setFilters(values));

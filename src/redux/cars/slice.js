@@ -9,16 +9,15 @@ const carsSlice = createSlice({
     loading: false,
     error: null,
     page: 1,
+    totalPages: 1,
   },
-  reducers: {
-    setPage: (state, action) => {
-      state.page = action.payload;
-    },
-    clearCars: state => {
-      // Новый экшен для очистки списка машин
-      state.items = [];
-    },
-  },
+
+  // reducers: {
+  //   clearCars: state => {
+  //           state.items = [];
+  //   },
+  // },
+
   extraReducers: builder =>
     builder
       .addCase(fetchCars.pending, state => {
@@ -26,9 +25,13 @@ const carsSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchCars.fulfilled, (state, action) => {
+        console.log('Fetched Cars:', action.payload);
+        console.log('Page:', action.payload.page);
         state.loading = false;
         state.error = null;
-        state.items = action.payload.cars; // Обновляем список машин
+        state.items = action.payload.cars;
+        state.totalPages = action.payload.totalPages;
+        state.page = action.payload.page;
       })
       .addCase(fetchCars.rejected, (state, action) => {
         state.loading = false;
@@ -61,5 +64,5 @@ const carsSlice = createSlice({
       }),
 });
 
-export const { setPage, clearCars } = carsSlice.actions;
+// export const { clearCars } = carsSlice.actions;
 export const carsReducer = carsSlice.reducer;
