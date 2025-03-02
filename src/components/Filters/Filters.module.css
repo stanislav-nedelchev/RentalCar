@@ -33,7 +33,6 @@
   background-repeat: no-repeat;
   background-position: right 16px center;
   background-size: 16px 16px;
-  cursor: pointer;
 }
 
 .fieldPrice {
@@ -53,7 +52,6 @@
   background-repeat: no-repeat;
   background-position: right 16px center;
   background-size: 16px 16px;
-  cursor: pointer;
 }
 
 .fieldBrand:focus,

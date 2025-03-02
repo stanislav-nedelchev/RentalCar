@@ -12,6 +12,7 @@ const LoadMoreBtn = () => {
 
   const handleLoadMore = () => {
     const nextPage = Number(currentPage) + 1;
+    const scrollPosition = window.scrollY;
     dispatch(
       fetchCars({
         page: nextPage,
@@ -20,7 +21,12 @@ const LoadMoreBtn = () => {
         minMileage: filters.minMileage,
         maxMileage: filters.maxMileage,
       }),
-    );
+    ).finally(() => {
+      window.scrollTo({
+        top: scrollPosition,
+        behavior: 'auto',
+      });
+    });
   };
 
   const isLoadMoreVisible = currentPage < totalPages;

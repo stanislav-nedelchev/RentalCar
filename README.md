@@ -40,11 +40,11 @@ The project is developed according to the technical specification.
 The project is implemented according to the design mockups. The main focus is on
 the desktop version, with responsiveness for mobile formats.
 
-# 📸 Link to the live page
+## 📸 Link to the live page
 
 [rental-car-mocha.vercel.app](https://rental-car-mocha.vercel.app/)
 
-##--------------------------------------------------------------------------------------------##
+---
 
 # RentalCar
 
@@ -87,7 +87,7 @@ the desktop version, with responsiveness for mobile formats.
 - **Сторінка окремого кемпера** (/catalog/:id) – детальна інформація та форма
   бронювання.
 
-# Дизайн
+## Дизайн
 
 Проект реалізований згідно з дизайнерськими макетами. Основна увага приділена
 десктопній версії, з адаптивністю для мобільних форматів.
