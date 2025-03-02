@@ -77,11 +77,11 @@ const Filters = () => {
                 value={values.brand}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                className={css.fieldBand}
+                className={css.fieldBrand}
               >
                 <option value="">Choose a brand</option>
                 {brands.map(brand => (
-                  <option key={brand} value={brand}>
+                  <option key={brand} value={brand} className={css.fieldOption}>
                     {brand}
                   </option>
                 ))}
@@ -102,7 +102,7 @@ const Filters = () => {
               >
                 <option value="">Choose a price</option>
                 {generatePriceOptions().map(price => (
-                  <option key={price} value={price}>
+                  <option key={price} value={price} className={css.fieldOption}>
                     {price}
                   </option>
                 ))}

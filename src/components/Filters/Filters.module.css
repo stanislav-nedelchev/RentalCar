@@ -1,11 +1,10 @@
 .formBox {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 16px;
-  width: 924px;
-  height: 68px;
-  align-items: flex-end;
   margin: 0 auto;
-  margin-bottom: 56px;
+  margin-bottom: 32px;
 }
 
 .label {
@@ -16,7 +15,7 @@
   margin-bottom: 8px;
 }
 
-.fieldBand {
+.fieldBrand {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -26,6 +25,13 @@
   height: 44px;
   background-color: var(--inputs);
   border: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('/images/chevrondown.svg');
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 16px 16px;
 }
 
 .fieldPrice {
@@ -38,14 +44,37 @@
   height: 44px;
   background-color: var(--inputs);
   border: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('/images/chevrondown.svg');
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 16px 16px;
+}
+
+.fieldBrand:focus,
+.fieldPrice:focus,
+.fieldMin:focus,
+.fieldMax:focus {
+  outline: none;
+}
+
+.fieldOption {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--gray);
 }
 
 .mileageBox {
   position: relative;
   display: flex;
-  width: 320px;
+  width: 280px;
   height: 68px;
   align-items: flex-end;
+  margin-bottom: 12px;
 }
 
 .errors {
@@ -53,6 +82,7 @@
   color: red;
   bottom: -20px;
   left: 12px;
+  font-size: 14px;
 }
 
 .fieldMin {
@@ -60,7 +90,7 @@
   border-right: 1px solid var(--gray-light);
   border-radius: 12px 0 0 12px;
   padding: 6px 16px;
-  width: 160px;
+  width: 140px;
   height: 44px;
   background-color: var(--inputs);
 }
@@ -68,7 +98,7 @@
 .fieldMax {
   border-radius: 0 12px 12px 0;
   padding: 6px 16px;
-  width: 160px;
+  width: 140px;
   height: 44px;
   background-color: var(--inputs);
   border: none;
@@ -81,4 +111,46 @@
   font-size: 16px;
   line-height: 1.25;
   color: var(--main);
+}
+
+@media screen and (min-width: 768px) {
+  .formBox {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 768px;
+    align-items: flex-end;
+    margin-bottom: 40px;
+  }
+
+  .mileageBox {
+    margin-bottom: 0;
+  }
+
+  .errors {
+    bottom: -14px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .formBox {
+    width: 924px;
+    height: 68px;
+    margin-bottom: 56px;
+  }
+
+  .mileageBox {
+    width: 320px;
+  }
+
+  .fieldMin {
+    width: 160px;
+  }
+
+  .fieldMax {
+    width: 160px;
+  }
+
+  .errors {
+    bottom: -20px;
+  }
 }

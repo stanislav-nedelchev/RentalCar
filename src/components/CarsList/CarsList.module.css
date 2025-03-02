@@ -6,7 +6,7 @@
   justify-content: center;
   column-gap: 22px;
   row-gap: 32px;
-  margin: 0 auto 80px;
+  margin: 0 auto 40px;
   width: 280px;
 }
 
@@ -29,5 +29,6 @@
     row-gap: 48px;
     column-gap: 32px;
     width: 1200px;
+    margin-bottom: 80px;
   }
 }
