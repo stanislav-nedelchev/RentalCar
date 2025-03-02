@@ -1,13 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { useParams } from 'react-router-dom';
-import css from './DetailsPage.module.css';
-import RentForm from '../../components/RentForm/RentForm.jsx';
-import CarInfoList from '../../components/CarInfoList/CarInfoList.jsx';
 import { selectCarById } from '../../redux/cars/selector.js';
-import { fetchCarById } from '../../redux/operations.js';
+import { fetchCarById } from '../../redux/cars/operations.js';
 import Loader from '../../components/Loader/Loader.jsx';
+import CarInfoList from '../../components/CarInfoList/CarInfoList.jsx';
+import RentForm from '../../components/RentForm/RentForm.jsx';
+import css from './DetailsPage.module.css';
 
 const DetailsPage = () => {
   const { id } = useParams();
@@ -23,7 +22,7 @@ const DetailsPage = () => {
     return <Loader />;
   }
 
-  const regex = /\/(\d+)-ai\.jpg$/;
+  const regex = /\/(\d+)-ai\.jpg$/; //  Тут мав бути id.Діставати із картинки невірно, але краще так ніж нічого
   const someNmb = car.img.match(regex);
   const carId = someNmb ? someNmb[1] : null;
 

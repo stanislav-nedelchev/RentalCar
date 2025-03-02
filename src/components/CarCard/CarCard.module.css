@@ -1,6 +1,11 @@
 .carCard {
   position: relative;
   width: 276px;
+  transition: transform 0.3s ease;
+}
+
+.carCard:hover {
+  transform: scale(1.02);
 }
 
 .favoriteBtn {

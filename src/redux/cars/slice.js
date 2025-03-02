@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchBrands, fetchCarById, fetchCars } from '../operations.js';
+import { fetchBrands, fetchCarById, fetchCars } from './operations.js';
 
 const carsSlice = createSlice({
   name: 'cars',
@@ -25,8 +25,6 @@ const carsSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchCars.fulfilled, (state, action) => {
-        console.log('Fetched Cars:', action.payload);
-        console.log('Page:', action.payload.page);
         state.loading = false;
         state.error = null;
         state.cars = [...state.cars, ...action.payload.cars];
@@ -43,7 +41,7 @@ const carsSlice = createSlice({
       })
       .addCase(fetchCarById.fulfilled, (state, action) => {
         state.loading = false;
-        state.items = [action.payload];
+        state.cars = [action.payload];
       })
       .addCase(fetchCarById.rejected, (state, action) => {
         state.loading = false;

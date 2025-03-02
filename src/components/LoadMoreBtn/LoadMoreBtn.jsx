@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { selectPage, selectTotalPages } from '../../redux/cars/selector.js';
-import { fetchCars } from '../../redux/operations.js';
+import { fetchCars } from '../../redux/cars/operations.js';
 import { selectFilters } from '../../redux/filters/selector.js';
 import Button from '../Button/Button.jsx';
 

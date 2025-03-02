@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
-import LinkSite from '../LinkSite/LinkSite.jsx';
-import css from './CarCard.module.css';
 import { addFavorite, removeFavorite } from '../../redux/favorites/slice.js';
 import { selectFavorites } from '../../redux/favorites/selectors.js';
+import LinkSite from '../LinkSite/LinkSite.jsx';
+import css from './CarCard.module.css';
 
 const CarCard = ({ car }) => {
   const dispatch = useDispatch();
