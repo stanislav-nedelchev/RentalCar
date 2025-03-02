@@ -79,7 +79,7 @@ const Filters = () => {
                 onBlur={handleBlur}
                 className={css.fieldBrand}
               >
-                <option value="">Choose a brand</option>
+                {!values.brand && <option value="">Choose a brand</option>}
                 {brands.map(brand => (
                   <option key={brand} value={brand} className={css.fieldOption}>
                     {brand}
@@ -100,7 +100,9 @@ const Filters = () => {
                 onBlur={handleBlur}
                 className={css.fieldPrice}
               >
-                <option value="">Choose a price</option>
+                {!values.rentalPrice && (
+                  <option value="">Choose a price</option>
+                )}
                 {generatePriceOptions().map(price => (
                   <option key={price} value={price} className={css.fieldOption}>
                     {price}
