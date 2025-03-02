@@ -31,8 +31,6 @@ const RentForm = ({ car }) => {
   };
 
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
-    console.log('Form data submitted:', values);
-    console.log(car);
     setFormValues(values);
     showModal();
     setSubmitting(false);
