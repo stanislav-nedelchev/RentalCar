@@ -39,7 +39,9 @@ const DetailsPage = () => {
     <div className={css.detailsPage}>
       <div>
         <img src={car.img} alt={car.brand} className={css.img} />
-        <RentForm car={car} />
+        <div className={css.formForDesktop}>
+          <RentForm car={car} />
+        </div>
       </div>
       <div>
         <div className={css.mainInfo}>
@@ -98,6 +100,9 @@ const DetailsPage = () => {
             <CarInfoList list={car.accessories} list2={car.functionalities} />
           </div>
         </div>
+      </div>
+      <div className={css.formForMobile}>
+        <RentForm car={car} />
       </div>
     </div>
   );

@@ -1,24 +1,21 @@
 .detailsPage {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  gap: 72px;
-  padding: 84px 120px 104px;
-  max-width: 1440px;
+  gap: 40px;
+  padding: 20px;
+  max-width: 500px;
   margin: 0 auto;
 }
 
 .img {
   border-radius: 19px;
-  width: 640px;
-  height: 512px;
+  width: 100%;
   object-fit: cover;
-  margin-bottom: 40px;
 }
 
-.mainInfo {
-  width: 488px;
-  margin-top: 20px;
-  margin-bottom: 68px;
+.formForDesktop {
+  display: none;
 }
 
 .title {
@@ -40,7 +37,7 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 1.25;
-  margin-bottom: 16px;
+  margin-bottom: 6px;
 }
 
 .locationSpan {
@@ -57,34 +54,27 @@
   font-size: 24px;
   line-height: 1.33;
   color: var(--button);
-  margin-bottom: 32px;
+  margin-bottom: 6px;
 }
 
 .description {
   font-weight: 500;
   font-size: 16px;
   line-height: 1.25;
+  margin-bottom: 16px;
 }
 
 .info {
   display: flex;
   flex-direction: column;
-  gap: 110px;
+  gap: 26px;
 }
 
 .infoTitle {
   font-weight: 600;
   font-size: 20px;
   line-height: 1.2;
-  margin-bottom: 20px;
-}
-
-.infoText {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.25;
-  margin-right: 8px;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
 .specificationsList {
@@ -103,4 +93,84 @@
 .specificationsIcon {
   fill: var(--main);
   margin-right: 8px;
+}
+
+.formForMobile {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .detailsPage {
+    flex-direction: row;
+    gap: 30px;
+    padding: 54px 30px;
+    max-width: 768px;
+  }
+
+  .img {
+    width: 340px;
+    margin-bottom: 40px;
+  }
+
+  .formForDesktop {
+    display: block;
+  }
+
+  .location {
+    margin-bottom: 16px;
+  }
+
+  .price {
+    margin-bottom: 16px;
+  }
+
+  .description {
+    margin-bottom: 24px;
+  }
+
+  .info {
+    gap: 40px;
+  }
+
+  .infoTitle {
+    margin-bottom: 10px;
+  }
+
+  .formForMobile {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .detailsPage {
+    gap: 72px;
+    padding: 84px 120px 104px;
+    max-width: 1440px;
+  }
+
+  .img {
+    width: 640px;
+  }
+
+  .mainInfo {
+    width: 488px;
+    margin-top: 20px;
+    margin-bottom: 68px;
+  }
+
+  .price {
+    margin-bottom: 32px;
+  }
+
+  .description {
+    margin-bottom: 0;
+  }
+
+  .info {
+    gap: 110px;
+  }
+
+  .infoTitle {
+    margin-bottom: 20px;
+  }
 }

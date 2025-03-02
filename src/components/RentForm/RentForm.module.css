@@ -1,11 +1,11 @@
 .rentForm {
   border: 1px solid var(--gray-light);
   border-radius: 10px;
-  padding: 32px;
-  width: 640px;
-  height: 488px;
+  padding: 12px;
+  width: 100%;
   background-color: var(--white);
 }
+
 .rentForm button {
   text-align: center;
 }
@@ -22,7 +22,7 @@
   font-size: 16px;
   line-height: 1.25;
   color: var(--gray);
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .input {
@@ -53,34 +53,72 @@
   background-color: var(--inputs);
   outline: none;
   border: none;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   resize: none;
-}
-
-.modalBox {
-  display: flex;
-  align-items: center;
-  column-gap: 30px;
 }
 
 .modalImg {
   border-radius: 19px;
-  width: 400px;
-  height: 320px;
+  width: 100%;
   object-fit: cover;
 }
 
 .modalTitle {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
+  margin-top: 16px;
 }
 
 .modalText {
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 
 .modalSpan {
   font-weight: 500;
   font-size: 16px;
   line-height: 1.25;
+}
+
+@media screen and (min-width: 768px) {
+  .rentForm {
+    padding: 32px;
+    width: 340px;
+    height: 488px;
+  }
+
+  .formText {
+    margin-bottom: 24px;
+  }
+
+  .inputComment {
+    margin-bottom: 24px;
+  }
+
+  .modalBox {
+    display: flex;
+    align-items: center;
+    column-gap: 30px;
+  }
+
+  .modalImg {
+    width: 400px;
+    height: 320px;
+  }
+
+  .modalTitle {
+    margin-bottom: 40px;
+    margin-top: 0;
+  }
+
+  .modalText {
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .rentForm {
+    padding: 32px;
+    width: 640px;
+    height: 488px;
+  }
 }
