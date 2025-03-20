@@ -2,7 +2,7 @@
 
 # Project Description
 
-🏅 _RentalCar_ RentalCar is the frontend part of a web application for a company
+🏅 _RentalCar_ is the frontend part of a web application for a company
 specializing in car rentals. The application allows users to browse a catalog of
 available cars, filter them by various parameters, view details of selected
 cars, and book transport.
@@ -81,10 +81,10 @@ the desktop version, with responsiveness for mobile formats.
 
 - **Головна** (/) – містить банер та основний заклик до дії.
 
-- **Каталог кемперів** (/catalog) – список автомобілів з можливістю фільтрації
+- **Каталог автомобілів** (/catalog) – список автомобілів з можливістю фільтрації
   та додавання в обране.
 
-- **Сторінка окремого кемпера** (/catalog/:id) – детальна інформація та форма
+- **Сторінка окремого автомобіля** (/catalog/:id) – детальна інформація та форма
   бронювання.
 
 ## Дизайн
