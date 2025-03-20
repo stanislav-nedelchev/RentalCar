@@ -13,9 +13,13 @@ const CarList = () => {
   return (
     <ul className={css.list}>
       {cars.length === 0 ? (
-        <p>No car was found for your request. Try changing the filters.</p>
+        <li>No car was found for your request. Try changing the filters.</li>
       ) : (
-        cars.map(car => <CarCard key={car.id} car={car} />)
+        cars.map(car => (
+          <li key={car.id}>
+            <CarCard car={car} />
+          </li>
+        ))
       )}
     </ul>
   );

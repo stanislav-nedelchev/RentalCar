@@ -101,9 +101,9 @@ const DetailsPage = () => {
           </div>
         </div>
       </div>
-      <div className={css.formForMobile}>
+      {/* <div className={css.formForMobile}>
         <RentForm car={car} />
-      </div>
+      </div> */}
     </div>
   );
 };

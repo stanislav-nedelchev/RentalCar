@@ -63,71 +63,64 @@ const RentForm = ({ car }) => {
       >
         {({ setFieldValue, isValid, dirty }) => (
           <Form>
-            <div>
-              <Field
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Name*"
-                className={css.input}
-              />
-              <ErrorMessage
-                name="name"
-                component="div"
-                className={css.errorMessage}
-              />
-            </div>
+            <Field
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Name*"
+              className={css.input}
+            />
+            <ErrorMessage
+              name="name"
+              component="div"
+              className={css.errorMessage}
+            />
 
-            <div>
-              <Field
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Email*"
-                className={css.input}
-              />
-              <ErrorMessage
-                name="email"
-                component="div"
-                className={css.errorMessage}
-              />
-            </div>
+            <Field
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email*"
+              className={css.input}
+            />
+            <ErrorMessage
+              name="email"
+              component="div"
+              className={css.errorMessage}
+            />
 
-            <div>
-              <Field name="bookingDate">
-                {({ field }) => (
-                  <DatePicker
-                    {...field}
-                    selected={field.value}
-                    onChange={date => setFieldValue('bookingDate', date)}
-                    dateFormat="yyyy-MM-dd"
-                    placeholderText="Booking date"
-                    isClearable
-                    className={css.input}
-                  />
-                )}
-              </Field>
-              <ErrorMessage
-                name="bookingDate"
-                component="div"
-                className={css.errorMessage}
-              />
-            </div>
+            <Field name="bookingDate">
+              {({ field }) => (
+                <DatePicker
+                  {...field}
+                  selected={field.value}
+                  onChange={date => setFieldValue('bookingDate', date)}
+                  dateFormat="yyyy-MM-dd"
+                  placeholderText="Booking date"
+                  isClearable
+                  className={css.input}
+                />
+              )}
+            </Field>
+            <ErrorMessage
+              name="bookingDate"
+              component="div"
+              className={css.errorMessage}
+            />
 
-            <div>
-              <Field
-                as="textarea"
-                id="comment"
-                name="comment"
-                placeholder="Comment"
-                className={css.inputComment}
-              />
-              <ErrorMessage
-                name="comment"
-                component="div"
-                className={css.errorMessage}
-              />
-            </div>
+            <Field
+              as="textarea"
+              id="comment"
+              name="comment"
+              placeholder="Comment"
+              className={css.inputComment}
+            />
+            <ErrorMessage
+              name="comment"
+              component="div"
+              className={css.errorMessage}
+            />
+
             <Button
               type="submit"
               text="Send"
